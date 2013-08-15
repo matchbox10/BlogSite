@@ -1,0 +1,59 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+
+function marky_blocks_block_info() {
+    $blocks = array();
+  // This example comes from node.module.
+  $blocks['social'] = array(
+    'info' => t('My Social'),
+  );
+
+  return $blocks;
+}
+
+function marky_blocks_block_view($delta) {
+  $block = array();
+  //delta is your block name. then just set it equal to your return functions.
+  switch ($delta) {
+    case 'social':
+      //use helper functions to set the blocks. Cleaner.
+      $block = marky_blocks_social();
+      break;
+ 
+  }
+  return $block;
+}
+
+
+function marky_blocks_social() {
+  $content = 'test Marky block';
+  //get the variable you set on the config page and do different things
+
+  //$content .= '<p>Some Marky Stuffs</p>';
+  //this $block['content'] uses the old way, just a regular string.
+  //$block['content'] = $content;
+  $block['content'] = theme('social');
+  $block['subject'] = 'Spread the Love';
+  return $block;
+}
+
+function marky_blocks_theme() {
+    $pathTemplate = drupal_get_path('module', 'marky_blocks').'/templates';
+    echo $pathTemplate;
+    return array(
+        'social' => array(
+            'template' => 'social-block',
+            'path' => $pathTemplate,
+            'type'=>'theme',
+            
+        ),
+    );
+
+}
+

@@ -1,0 +1,4 @@
+name = Marky Blocks
+description = These are the blocks in the Marky Modules
+core = 7.x
+package = Marky
